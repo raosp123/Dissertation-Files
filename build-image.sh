@@ -2,18 +2,20 @@
 
 # set -euo pipefail
 
-# kubectl delete -f yamls/http3-app.yaml
+kubectl delete -f yamls/http3-app.yaml
 
-# minikube image rm http3-tools
+sleep 5
 
-# minikube image build -t http3-tools .
+minikube image rm http3-tools
 
-# kubectl apply -f yaml/http3-app.yaml
+minikube image build -t http3-tools .
+
+kubectl apply -f yamls/http3-app.yaml
 
 
 OLD_CONTAINERS=$(docker image ls | grep "<none>")
 
-NUM_CONTAINER=$(OLD_CONTAINERS | wc -l)
+NUM_CONTAINER=$( ${OLD_CONTAINERS} | wc -l )
 
 if [[ -n "${OLD_CONTAINERS}" ]]; then
 

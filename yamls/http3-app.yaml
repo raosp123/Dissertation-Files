@@ -26,8 +26,9 @@ spec:
           name: http3-server
         livenessProbe:
           exec:
-            command: ["ps", "-ef", "|" , "grep", "[p]ython"]
+            command: ["/bin/bash","-c","ps -ef | grep [p]ython"]
           initialDelaySeconds: 120
+          periodSeconds: 30
 ---
 apiVersion: v1
 kind: Service
@@ -41,6 +42,6 @@ spec:
     app.kubernetes.io/name: http3-app
   ports:
     - protocol: UDP
-      port: 443
+      port: 4433
       targetPort: http3-server
 

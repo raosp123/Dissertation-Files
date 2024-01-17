@@ -34,10 +34,10 @@ if [[ "$HOST_ID" != "0" ]]; then
             /usr/bin/screen -LdmS http3-client python3 /opt/aioquic/examples/http3_client.py --ca-certs /opt/aioquic/tests/pycacert.pem https://localhost:4433/
         fi
 
-		# while true ; do
-		# 	sleep 600
-		# 	echo -e "Currently running servers at $(date) are: \n\n$(ps -ef | grep "[p]ython" | awk '{print $8, $9}')"
-		# done
+		while true ; do
+			sleep 600
+			echo -e "Currently running servers at $(date) are: \n\n$(ps -ef | grep "[p]ython" | awk '{print $8, $9}')"
+		done
 
     else
         echo "No host type specified, use flags --server or --client"

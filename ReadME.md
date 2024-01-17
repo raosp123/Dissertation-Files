@@ -6,8 +6,6 @@ pip install asgiref dnslib "flask<2.2" httpbin starlette "werkzeug<2.1" wsproto
 
 ```
 
-
-
 Testing Commands:
 
 Server 
@@ -15,6 +13,9 @@ Server
 
 Client
 	`python examples/http3_client.py --ca-certs tests/pycacert.pem https://localhost:4433/`
+
+
+Docker Commands
 
 
 `--secrets-log ssl-keylog-secrets.log` - lets you output the secrets log file for the ssl certificate, used for wireshark decryption
@@ -27,6 +28,4 @@ CLIENT_HANDSHAKE_TRAFFIC_SECRET 6e08b9a60e114c22abd52d2ea695f6d90c47e063c9a1ee7b
 SERVER_TRAFFIC_SECRET_0 6e08b9a60e114c22abd52d2ea695f6d90c47e063c9a1ee7b3fe5d861663a15bf f4be0af828a45dc671be15c8482de37ecd43eba199494b3bc96299ea1b62658e0b5f0064e941cde921c65100f2368c12
 CLIENT_TRAFFIC_SECRET_0 6e08b9a60e114c22abd52d2ea695f6d90c47e063c9a1ee7b3fe5d861663a15bf feb16e0174ba8147f0b0f0d4668725ab491ebcf6888bcfa010843b97ccc203e4b7f1ef14590981dace78168b889d765a
 
-
-Wireshark TLS decryption setup:
 
