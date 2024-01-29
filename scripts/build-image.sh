@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# set -euo pipefail
+set -euo pipefail
 
-kubectl delete -f yamls/http3-app.yaml
+kubectl delete -f yamls
 
 sleep 5
 
@@ -10,7 +10,7 @@ minikube image rm http3-tools
 
 minikube image build -t http3-tools .
 
-kubectl apply -f yamls/http3-app.yaml
+kubectl apply -f yamls
 
 
 OLD_CONTAINERS=$(docker image ls | grep "<none>")

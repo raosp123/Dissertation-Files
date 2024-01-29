@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 COPY aioquic /opt/aioquic
 
-COPY http3-setup.sh /opt/scripts/setup.sh
+COPY scripts/http3-setup.sh /opt/scripts/setup.sh
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	python3 \
@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	python3-pip \
 	net-tools \
 	screen \
+	netcat \
+	dnsutils \
 	iproute2; \
 	pip3 install --upgrade pip; \
 	rm -rf /var/lib/apt/lists/*; \
