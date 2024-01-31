@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: http3-server
+  name: http3-client
   namespace: http3-test
   labels:
-    app.kubernetes.io/name: http3-server
+    app.kubernetes.io/name: http3-client
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: http3-server
+      app.kubernetes.io/name: http3-client
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: http3-server
+        app.kubernetes.io/name: http3-client
     spec:
       containers:
-      - name: http3-server
+      - name: http3-client
         image: http3-tools
         imagePullPolicy: Never
         command: ["/opt/scripts/setup.sh"]
@@ -24,6 +24,7 @@ spec:
         ports:
         - containerPort: 4433
           name: http3-listen
+          protocol: UDP
         livenessProbe:
           exec:
             command: ["/bin/bash","-c","ps -ef | grep [p]ython"]
@@ -33,13 +34,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: http3-server
+  name: http3-client
   namespace: http3-test
   labels:
-    app.kubernetes.io/name: http3-server
+    app.kubernetes.io/name: http3-client
 spec:
   selector:
-    app.kubernetes.io/name: http3-server
+    app.kubernetes.io/name: http3-client
   ports:
     - protocol: UDP
       port: 4433
