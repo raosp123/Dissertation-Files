@@ -2,7 +2,9 @@ FROM ubuntu:latest
 
 COPY aioquic /opt/aioquic
 
-COPY scripts/http3-setup.sh /opt/scripts/setup.sh
+
+COPY scripts/setup.sh scripts/k8sh3-client.sh scripts/k8sh3-server.sh /opt/scripts/
+
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	python3 \
@@ -21,6 +23,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	pip3 install -e /opt/aioquic ;\
 	pip3 install asgiref dnslib "flask<2.2" httpbin starlette "werkzeug<2.1" wsproto; \
 	chmod +x /opt/scripts/setup.sh
+	chmod +x /opt/scripts/k8sh3-server.sh
+	chmod +x /opt/scripts/k8sh3-client.sh
 
 
 

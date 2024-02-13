@@ -4,7 +4,9 @@ set -euo pipefail
 
 kubectl delete -f yamls
 
-sleep 5
+helm uninstall traefik
+
+sleep 15
 
 minikube image rm http3-tools
 
