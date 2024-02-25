@@ -304,7 +304,7 @@ logs:
     level: ERROR
   access:
     # -- To enable access logs
-    enabled: false
+    enabled: true
     ## By default, logs are written using the Common Log Format (CLF) on stdout.
     ## To write logs in JSON, use json in the format option.
     ## If the given format is unsupported, the default (CLF) is used instead.
@@ -330,7 +330,7 @@ logs:
         # ClientUsername: drop
       headers:
         # -- Available modes: keep, drop, redact.
-        defaultmode: drop
+        defaultmode: keep
         # -- Names of the headers to limit.
         names: {}
         ## Examples:
@@ -697,7 +697,7 @@ ports:
     ## https://github.com/kubernetes/kubernetes/issues/47249#issuecomment-587960741
     http3:
       enabled: false
-    # advertisedPort: 4443
+      advertisedPort: 4443
     #
     ## -- Trust forwarded  headers information (X-Forwarded-*).
     # forwardedHeaders:
@@ -716,6 +716,8 @@ ports:
       # this is the name of a TLSOption definition
       options: ""
       certResolver: ""
+      certFile: /etc/certs/tls.crt
+      keyFile: /etc/certs/tls.key
       domains: []
       # - main: example.com
       #   sans:

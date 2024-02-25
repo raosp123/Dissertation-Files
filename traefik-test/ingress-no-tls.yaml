@@ -3,9 +3,6 @@ kind: Ingress
 metadata:
   name: ingress-test
   namespace: http3-test
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
 spec:
   rules:
     - http:
@@ -17,5 +14,3 @@ spec:
                 name:  nginx-service
                 port:
                   number: 80
-  tls:
-  - secretName: tls-secret

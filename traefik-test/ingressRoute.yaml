@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: example-ingress
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`localhost`)
+      kind: Rule
+      services:
+        - name: nginx-service
+          port: 80
+  tls:
+    certFile: /etc/certs/tls.crt
+    keyFile: /etc/certs/tls.key
