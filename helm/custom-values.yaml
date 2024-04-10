@@ -1,0 +1,8 @@
+ports:
+  websecure:
+    http3:
+      enabled: true
+logs:
+  access:
+    enabled: true
+

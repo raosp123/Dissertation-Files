@@ -3,3 +3,199 @@ Wireshark SSL debug log
 GnuTLS version:    3.7.3
 Libgcrypt version: 1.9.4
 
+
+dissect_tls13_handshake enter frame #1 (first time)
+packet_from_server: is from server - FALSE
+  conversation = 0x5acdbc67b600, ssl_session = 0x5acdbc67c3a0, from_server = 0
+dissect_ssl3_handshake iteration 1 type 1 offset 0 length 373 bytes
+ssl_dissect_hnd_hello_common found CLIENT RANDOM -> state 0x2011
+
+dissect_tls13_handshake enter frame #2 (first time)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = 0x5acdbc67c3a0, from_server = 1
+dissect_ssl3_handshake iteration 1 type 2 offset 0 length 119 bytes
+ssl_try_set_version found version 0x0304 -> state 0x2011
+ssl_dissect_hnd_hello_common found SERVER RANDOM -> state 0x2013
+ssl_set_cipher found CIPHER 0x1302 TLS_AES_256_GCM_SHA384 -> state 0x2017
+trying to use TLS keylog in /home/pascal/Desktop/Dissertation_Repos/Dissertation-Files/pcap-tests/local_test/local-ssl-keylog-secrets.log
+  checking keylog line: SERVER_HANDSHAKE_TRAFFIC_SECRET a9d246aa0182380c6b436310a7ed1b1179748469a270ebf356b633e60e515d89 01091b97e2be17c63e86b03addd99af290d36b527fd6a0960e84d4b59f09835362ae3230a710a62127592d256d3a2a25
+    matched server_handshake
+  checking keylog line: CLIENT_HANDSHAKE_TRAFFIC_SECRET a9d246aa0182380c6b436310a7ed1b1179748469a270ebf356b633e60e515d89 5256835f52b8ce592cc4f40e13755da45792a45ba8bcc448de975bf604e47457a83a9691eacbdda2be69512d2e9c231b
+    matched client_handshake
+  checking keylog line: SERVER_TRAFFIC_SECRET_0 a9d246aa0182380c6b436310a7ed1b1179748469a270ebf356b633e60e515d89 496304bc87feca233513419d566e3728c0aef2587c13f8ac1d4c52bec1ff6ce3b9e509be6b18dfe6c23dc5b4d34223d6
+    matched server_appdata
+  checking keylog line: CLIENT_TRAFFIC_SECRET_0 a9d246aa0182380c6b436310a7ed1b1179748469a270ebf356b633e60e515d89 96b9ea8eed8759d755474ed7e57dadb2757eeca49b837c02cc6801d43a60a53cd0fcfd6719d350377ab974c46087747c
+    matched client_appdata
+tls13_get_quic_secret frame 2 is_quic=1
+trying to use TLS keylog in /home/pascal/Desktop/Dissertation_Repos/Dissertation-Files/pcap-tests/local_test/local-ssl-keylog-secrets.log
+tls13_get_quic_secret Retrieved QUIC traffic secret.
+Client Random[32]:
+| a9 d2 46 aa 01 82 38 0c 6b 43 63 10 a7 ed 1b 11 |..F...8.kCc.....|
+| 79 74 84 69 a2 70 eb f3 56 b6 33 e6 0e 51 5d 89 |yt.i.p..V.3..Q].|
+SERVER_HANDSHAKE_TRAFFIC_SECRET[48]:
+| 01 09 1b 97 e2 be 17 c6 3e 86 b0 3a dd d9 9a f2 |........>..:....|
+| 90 d3 6b 52 7f d6 a0 96 0e 84 d4 b5 9f 09 83 53 |..kR...........S|
+| 62 ae 32 30 a7 10 a6 21 27 59 2d 25 6d 3a 2a 25 |b.20...!'Y-%m:*%|
+
+dissect_tls13_handshake enter frame #2 (first time)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = 0x5acdbc67c3a0, from_server = 1
+dissect_ssl3_handshake iteration 1 type 8 offset 0 length 106 bytes
+
+dissect_tls13_handshake enter frame #3 (first time)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = 0x5acdbc67c3a0, from_server = 1
+dissect_ssl3_handshake iteration 1 type 11 offset 0 length 1534 bytes
+Certificate.KeyID[20]:
+| 06 be eb 76 fa b5 91 13 24 a3 e0 a8 14 84 10 34 |...v....$......4|
+| 73 b7 6a ff                                     |s.j.            |
+dissect_ssl3_handshake iteration 0 type 15 offset 672 length 388 bytes
+dissect_ssl3_handshake iteration 0 type 20 offset 1064 length 48 bytes
+trying to use TLS keylog in /home/pascal/Desktop/Dissertation_Repos/Dissertation-Files/pcap-tests/local_test/local-ssl-keylog-secrets.log
+tls13_get_quic_secret frame 4 is_quic=1
+trying to use TLS keylog in /home/pascal/Desktop/Dissertation_Repos/Dissertation-Files/pcap-tests/local_test/local-ssl-keylog-secrets.log
+tls13_get_quic_secret Retrieved QUIC traffic secret.
+Client Random[32]:
+| a9 d2 46 aa 01 82 38 0c 6b 43 63 10 a7 ed 1b 11 |..F...8.kCc.....|
+| 79 74 84 69 a2 70 eb f3 56 b6 33 e6 0e 51 5d 89 |yt.i.p..V.3..Q].|
+CLIENT_TRAFFIC_SECRET_0[48]:
+| 96 b9 ea 8e ed 87 59 d7 55 47 4e d7 e5 7d ad b2 |......Y.UGN..}..|
+| 75 7e ec a4 9b 83 7c 02 cc 68 01 d4 3a 60 a5 3c |u~....|..h..:`.<|
+| d0 fc fd 67 19 d3 50 37 7a b9 74 c4 60 87 74 7c |...g..P7z.t.`.t||
+tls13_get_quic_secret frame 4 is_quic=1
+trying to use TLS keylog in /home/pascal/Desktop/Dissertation_Repos/Dissertation-Files/pcap-tests/local_test/local-ssl-keylog-secrets.log
+tls13_get_quic_secret Retrieved QUIC traffic secret.
+Client Random[32]:
+| a9 d2 46 aa 01 82 38 0c 6b 43 63 10 a7 ed 1b 11 |..F...8.kCc.....|
+| 79 74 84 69 a2 70 eb f3 56 b6 33 e6 0e 51 5d 89 |yt.i.p..V.3..Q].|
+SERVER_TRAFFIC_SECRET_0[48]:
+| 49 63 04 bc 87 fe ca 23 35 13 41 9d 56 6e 37 28 |Ic.....#5.A.Vn7(|
+| c0 ae f2 58 7c 13 f8 ac 1d 4c 52 be c1 ff 6c e3 |...X|....LR...l.|
+| b9 e5 09 be 6b 18 df e6 c2 3d c5 b4 d3 42 23 d6 |....k....=...B#.|
+
+dissect_tls13_handshake enter frame #4 (first time)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = 0x5acdbc67c3a0, from_server = 1
+dissect_ssl3_handshake iteration 1 type 4 offset 0 length 85 bytes
+tls13_get_quic_secret frame 5 is_quic=1
+trying to use TLS keylog in /home/pascal/Desktop/Dissertation_Repos/Dissertation-Files/pcap-tests/local_test/local-ssl-keylog-secrets.log
+tls13_get_quic_secret Retrieved QUIC traffic secret.
+Client Random[32]:
+| a9 d2 46 aa 01 82 38 0c 6b 43 63 10 a7 ed 1b 11 |..F...8.kCc.....|
+| 79 74 84 69 a2 70 eb f3 56 b6 33 e6 0e 51 5d 89 |yt.i.p..V.3..Q].|
+CLIENT_HANDSHAKE_TRAFFIC_SECRET[48]:
+| 52 56 83 5f 52 b8 ce 59 2c c4 f4 0e 13 75 5d a4 |RV._R..Y,....u].|
+| 57 92 a4 5b a8 bc c4 48 de 97 5b f6 04 e4 74 57 |W..[...H..[...tW|
+| a8 3a 96 91 ea cb dd a2 be 69 51 2d 2e 9c 23 1b |.:.......iQ-..#.|
+
+dissect_tls13_handshake enter frame #6 (first time)
+packet_from_server: is from server - FALSE
+  conversation = 0x5acdbc67b600, ssl_session = 0x5acdbc67c3a0, from_server = 0
+dissect_ssl3_handshake iteration 1 type 20 offset 0 length 48 bytes
+trying to use TLS keylog in /home/pascal/Desktop/Dissertation_Repos/Dissertation-Files/pcap-tests/local_test/local-ssl-keylog-secrets.log
+
+dissect_tls13_handshake enter frame #1 (already visited)
+packet_from_server: is from server - FALSE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 0
+dissect_ssl3_handshake iteration 1 type 1 offset 0 length 373 bytes
+
+dissect_tls13_handshake enter frame #2 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 2 offset 0 length 119 bytes
+
+dissect_tls13_handshake enter frame #2 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 8 offset 0 length 106 bytes
+
+dissect_tls13_handshake enter frame #3 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 11 offset 0 length 1534 bytes
+dissect_ssl3_handshake iteration 0 type 15 offset 672 length 388 bytes
+dissect_ssl3_handshake iteration 0 type 20 offset 1064 length 48 bytes
+
+dissect_tls13_handshake enter frame #4 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 4 offset 0 length 85 bytes
+
+dissect_tls13_handshake enter frame #6 (already visited)
+packet_from_server: is from server - FALSE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 0
+dissect_ssl3_handshake iteration 1 type 20 offset 0 length 48 bytes
+
+dissect_tls13_handshake enter frame #1 (already visited)
+packet_from_server: is from server - FALSE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 0
+dissect_ssl3_handshake iteration 1 type 1 offset 0 length 373 bytes
+
+dissect_tls13_handshake enter frame #1 (already visited)
+packet_from_server: is from server - FALSE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 0
+dissect_ssl3_handshake iteration 1 type 1 offset 0 length 373 bytes
+
+dissect_tls13_handshake enter frame #2 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 2 offset 0 length 119 bytes
+
+dissect_tls13_handshake enter frame #2 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 8 offset 0 length 106 bytes
+
+dissect_tls13_handshake enter frame #3 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 11 offset 0 length 1534 bytes
+dissect_ssl3_handshake iteration 0 type 15 offset 672 length 388 bytes
+dissect_ssl3_handshake iteration 0 type 20 offset 1064 length 48 bytes
+
+dissect_tls13_handshake enter frame #4 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 4 offset 0 length 85 bytes
+
+dissect_tls13_handshake enter frame #6 (already visited)
+packet_from_server: is from server - FALSE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 0
+dissect_ssl3_handshake iteration 1 type 20 offset 0 length 48 bytes
+
+dissect_tls13_handshake enter frame #1 (already visited)
+packet_from_server: is from server - FALSE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 0
+dissect_ssl3_handshake iteration 1 type 1 offset 0 length 373 bytes
+
+dissect_tls13_handshake enter frame #2 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 2 offset 0 length 119 bytes
+
+dissect_tls13_handshake enter frame #2 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 8 offset 0 length 106 bytes
+
+dissect_tls13_handshake enter frame #3 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 11 offset 0 length 1534 bytes
+dissect_ssl3_handshake iteration 0 type 15 offset 672 length 388 bytes
+dissect_ssl3_handshake iteration 0 type 20 offset 1064 length 48 bytes
+
+dissect_tls13_handshake enter frame #4 (already visited)
+packet_from_server: is from server - TRUE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 1
+dissect_ssl3_handshake iteration 1 type 4 offset 0 length 85 bytes
+
+dissect_tls13_handshake enter frame #6 (already visited)
+packet_from_server: is from server - FALSE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 0
+dissect_ssl3_handshake iteration 1 type 20 offset 0 length 48 bytes
+
+dissect_tls13_handshake enter frame #1 (already visited)
+packet_from_server: is from server - FALSE
+  conversation = 0x5acdbc67b600, ssl_session = (nil), from_server = 0
+dissect_ssl3_handshake iteration 1 type 1 offset 0 length 373 bytes

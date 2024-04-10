@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -76,6 +75,12 @@ spec:
         - name: "websecure"
           containerPort: 8443
           protocol: "TCP"
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
         volumeMounts:
           - name: data
             mountPath: /data
@@ -87,7 +92,7 @@ spec:
           - "--entrypoints.metrics.address=:9100/tcp"
           - "--entrypoints.traefik.address=:9000/tcp"
           - "--entrypoints.web.address=:8000/tcp"
-          - "--entrypoints.websecure.address=:8443/tcp"
+          - "--entrypoints.websecure.address=:8443/udp"
           - "--api.dashboard=true"
           - "--ping=true"
           - "--metrics.prometheus=true"
@@ -95,6 +100,9 @@ spec:
           - "--providers.kubernetescrd"
           - "--providers.kubernetesingress"
           - "--entrypoints.websecure.http.tls=true"
+          - "--experimental.http3=true"
+          - "--entrypoints.websecure.http3"
+          - "--entrypoints.websecure.http3.advertisedPort=4433"
         env:
           - name: POD_NAME
             valueFrom:
@@ -104,19 +112,13 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.namespace
-      - name: tcpdumpsidecar
-        image: raosp/http3-tools
-        imagePullPolicy: Never
-        ports:
-        - containerPort: 5432
-        command: ["/bin/bash", "-ec", "apt-get update && apt-get install sudo; sudo apt-get install tcpdump -y; while :; do echo '.'; sleep 5 ; done"]
       volumes:
         - name: data
           emptyDir: {}
         - name: tmp
           emptyDir: {}
-      # securityContext:
-      #   fsGroupChangePolicy: OnRootMismatch
-      #   runAsGroup: 65532
-      #   runAsNonRoot: true
-      #   runAsUser: 65532
+      securityContext:
+        fsGroupChangePolicy: OnRootMismatch
+        runAsGroup: 65532
+        runAsNonRoot: true
+        runAsUser: 65532

@@ -680,7 +680,7 @@ ports:
     ## -- Different target traefik port on the cluster, useful for IP type LB
     # targetPort: 80
     ## -- The port protocol (TCP/UDP)
-    protocol: TCP
+    protocol: UDP
     # nodePort: 32443
     # -- Defines whether the port is exposed on the internal service;
     # note that ports exposed on the default service are exposed on the internal
