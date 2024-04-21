@@ -18,7 +18,7 @@ spec:
       containers:
       - name: http3-server
         image: raosp/http3-tools
-        imagePullPolicy: Never
+        imagePullPolicy: Always
         command: ["/opt/scripts/setup.sh"]
         args: ["--server"]
         ports:

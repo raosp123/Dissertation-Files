@@ -28,11 +28,10 @@ if [[ "$HOST_ID" != "0" ]]; then
 
         if [[ "$HOST_ID" = "server" ]]; then
             echo "launching http3-tools in $HOST_ID mode"
-            /usr/bin/screen -LdmS python3 /opt/aioquic/examples/http3_client.py --ca-certs /opt/aioquic/tests/pycacert.pem https://http3-server:4433/ --secrets-log /opt/ssl-keylog-secrets.log -k
-	
+            /usr/bin/screen -LdmS python3 /opt/aioquic/examples/http3_server.py --certificate /opt/aioquic/tests/ssl_cert.pem --private-key /opt/aioquic/tests/ssl_key.pem --secrets-log /opt/tls-handshake-secrets/local-ssl-keylog-secrets.log --quic-log /opt/qlogs/server/
         elif [[ "$HOST_ID" = "client" ]]; then
             echo "launching http3-tools in $HOST_ID mode"
-            /usr/bin/screen -LdmS python3 /opt/aioquic/examples/http3_client.py --ca-certs /opt/aioquic/tests/pycacert.pem https://http3-server:4433/ --secrets-log /opt/ssl-keylog-secrets.log -k
+            /usr/bin/screen -LdmS python3 /opt/aioquic/examples/http3_client.py --ca-certs /opt/aioquic/tests/pycacert.pem https://http3-server:4433/ --quic-log /opt/qlogs/client/ -k
         fi
 
 		while true ; do
