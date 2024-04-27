@@ -2,6 +2,13 @@ sudo tcpdump -i lo udp port 4433 -X -w Desktop/Dissertation_repos/Dissertation-F
 
 sudo tcpdump -i lo udp port 4433 -X -w /opt/test.pcap -vv
 
+
+sudo tcpdump udp port 4433 -X -w /opt/test.pcap -vv
+
+
+Cloud is `sudo tcpdump udp dst 192.168.6.1 -X -w Desktop/Dissertation_repos/Dissertation-Files/test.pcap -vv `
+
+
 netcat:
 
 echo "test" | nc -4u -w0 http3-server 4433
